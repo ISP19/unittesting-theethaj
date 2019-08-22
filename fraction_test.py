@@ -26,20 +26,22 @@ class FractionTest(unittest.TestCase):
         f = Fraction(99)
         self.assertEqual("99", f.__str__())
 
-    # TODO Write tests for __init__, __eq__, +, *.
-    # Here is an example, but you must add more test cases.  
-    # The test requires that your __eq__ is correct.
     def test_add(self):
         # 3/4 = 2/3 + 1/12
         self.assertEqual(Fraction(3,4), Fraction(1,12)+Fraction(2,3))
+        # 3/2 = 3/3 + 6/12
+        self.assertEqual(Fraction(3,2), Fraction(3,3)+Fraction(6,12))
+        # 11/15 = 2/5 + 5/15
+        self.assertEqual(Fraction(11,15), Fraction(2,5)+Fraction(5,15))
 
     def test_eq(self):
-        f = Fraction(1,2)
-        g = Fraction(-40,-80)
-        h = Fraction(10000,20001) # not quite 1/2
+        f = Fraction(1,0)
+        g = Fraction(40,0)
+        h = Fraction(10000,20001)       # not quite 1/2
+        i = Fraction(-23,0)
         self.assertTrue(f == g)
-        self.assertTrue(f.__eq__(g))  # same thing
+        self.assertTrue(f.__eq__(g))    # same thing
         self.assertFalse(f == h)
         self.assertFalse(f.__eq__(h))
-        #TODO write more tests using other cases.
-        # Consider special values like 0, 1/0, -1/0
+        self.assertFalse(g.__eq__(h))
+        self.assertFalse(i.__eq__(f))
