@@ -3,7 +3,7 @@ from listutil import unique
 
 
 class ListUtilTest(unittest.TestCase):
-    """Test the results of the unique class. """
+    """Test the results of the unique class in many cases. """
 
     def test_single_item_list(self):
         self.assertEqual(['hi'], unique(['hi']))

@@ -33,6 +33,56 @@ class FractionTest(unittest.TestCase):
         self.assertEqual(Fraction(3,2), Fraction(3,3)+Fraction(6,12))
         # 11/15 = 2/5 + 5/15
         self.assertEqual(Fraction(11,15), Fraction(2,5)+Fraction(5,15))
+        # 1/0 = 2/3 + 5/0
+        self.assertEqual(Fraction(1,0), Fraction(2,3)+Fraction(5,0))
+        # 1/0 = 2/0 + 5/2
+        self.assertEqual(Fraction(1,0), Fraction(2,0)+Fraction(5,2))
+
+        # 1/0 = 2/0 + 5/0
+        self.assertEqual(Fraction(1,0), Fraction(2,0)+Fraction(5,0))
+        # (-1)/0 = (-2)/0 + (-5)/0
+        self.assertEqual(Fraction(-1,0), Fraction(-2,0)+Fraction(-5,0))
+        # 0/0 = (-2)/0 + 5/0
+        self.assertEqual(Fraction(0,0), Fraction(-2,0)+Fraction(5,0))
+        # 1/0 = 1/0 + 3/2
+        self.assertEqual(Fraction(1,0), Fraction(1,0)+Fraction(3,2))
+        # 1/0 = 1/0 + (-3)/2
+        self.assertEqual(Fraction(1,0), Fraction(1,0)+Fraction(-3,2))
+        # (-1)/0 = (-1)/0 + 3/2
+        self.assertEqual(Fraction(-1,0), Fraction(-1,0)+Fraction(3,2))
+        # (-1)/0 = (-1)/0 + (-3)/2
+        self.assertEqual(Fraction(-1,0), Fraction(-1,0)+Fraction(-3,2))
+        # 0/0 = 0/0 + 3/2
+        self.assertEqual(Fraction(0,0), Fraction(0,0)+Fraction(3,2))
+        # 0/0 = 0/0 + (-3)/2
+        self.assertEqual(Fraction(0,0), Fraction(0,0)+Fraction(-3,2))
+        # 0/0 = 0/0 + 0/0
+        self.assertEqual(Fraction(0,0), Fraction(0,0)+Fraction(0,0))
+        # 0/0 = 0/0 + 1/0
+        self.assertEqual(Fraction(0,0), Fraction(0,0)+Fraction(1,0))
+        # 0/0 = 0/0 + (-1)/0
+        self.assertEqual(Fraction(0,0), Fraction(0,0)+Fraction(-1,0))
+
+    def test_mul(self):
+        # 0/0 = 0/12 * 1/0
+        self.assertEqual(Fraction(0,0), Fraction(0,12)*Fraction(1,0))
+        # 0/0 = 0/3 * 0/0
+        self.assertEqual(Fraction(0,0), Fraction(0,3)*Fraction(0,0))
+        # 0/0 = 2/0 * 0/0
+        self.assertEqual(Fraction(0,0), Fraction(2,0)*Fraction(0,0))
+        # 1/0 = 2/0 * 3/0
+        self.assertEqual(Fraction(1,0), Fraction(2,0)*Fraction(3,0))
+        # 0/0 = 0/0 * 0/0
+        self.assertEqual(Fraction(0,0), Fraction(0,0)*Fraction(0,0))
+
+        # 0/2 = 2/3 * 0/2
+        self.assertEqual(Fraction(0,2), Fraction(2,3)*Fraction(0,2))
+        # 1/0 = 2/0 * 2/3
+        self.assertEqual(Fraction(1,0), Fraction(2,0)*Fraction(2,3))
+        # 0/0 = 2/3 * 0/0
+        self.assertEqual(Fraction(0,0), Fraction(2,3)*Fraction(0,0))
+        # 1/4 = 1/2 * 1/2
+        self.assertEqual(Fraction(1,4), Fraction(1,2)*Fraction(1,2))
 
     def test_eq(self):
         f = Fraction(1,0)

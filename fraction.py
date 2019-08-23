@@ -21,11 +21,9 @@ class Fraction:
             denominator = abs(denominator)
 
         elif denominator == 0:
-            if numerator == 0:
-                raise ZeroDivisionError("Not Required")
-            elif numerator < 0:
+            if numerator < 0:
                 numerator = -1
-            elif numerator > 0:
+            elif numerator >= 0:
                 numerator = 1
 
         gcd = math.gcd(numerator, denominator)
@@ -39,14 +37,75 @@ class Fraction:
         numerator = (self.numerator * frac.denominator) + (self.denominator * frac.numerator)
         denominator = self.denominator * frac.denominator
 
-        if frac.denominator == 0 or self.denominator == 0:
-            numerator == 1 and denominator == 0
-        return Fraction(numerator, denominator)
+        if frac.denominator == 0 and self.denominator == 0:
+            if frac.numerator > 0 and self.numerator > 0:
+                return Fraction(numerator=1, denominator=0)
+            elif frac.numerator < 0 and self.numerator < 0:
+                return Fraction(numerator=-1, denominator=0)
+            else:
+                return Fraction(numerator=0, denominator=0)
+        elif frac.denominator != 0 and self.denominator != 0:
+            return Fraction(numerator, denominator)
+        elif self.denominator == 0 and frac.denominator != 0:
+            if self.numerator > 0 and frac.numerator != 0 and frac.numerator > 0:
+                return Fraction(numerator=1, denominator=0)
+            elif self.numerator > 0 and frac.numerator != 0 and frac.numerator < 0:
+                return Fraction(numerator=1, denominator=0)
+            elif self.numerator < 0 and frac.numerator != 0 and frac.numerator > 0:
+                return Fraction(numerator=-1, denominator=0)
+            elif self.numerator < 0 and frac.numerator != 0 and frac.numerator < 0:
+                return Fraction(numerator=-1, denominator=0)
+            elif self.numerator == 0 and frac.numerator != 0 and frac.numerator > 0:
+                return Fraction(numerator=0, denominator=0)
+            elif self.numerator == 0 and frac.numerator != 0 and frac.numerator < 0:
+                return Fraction(numerator=0, denominator=0)
+        elif self.denominator != 0 and frac.denominator == 0:
+            if self.numerator != 0 and frac.numerator > 0 and self.numerator > 0:
+                return Fraction(numerator=1, denominator=0)
+            elif self.numerator != 0 and frac.numerator > 0 and self.numerator < 0:
+                return Fraction(numerator=1, denominator=0)
+            elif self.numerator != 0 and frac.numerator < 0 and self.numerator > 0:
+                return Fraction(numerator=-1, denominator=0)
+            elif self.numerator != 0 and frac.numerator < 0 and self.numerator < 0:
+                return Fraction(numerator=-1, denominator=0)
+            elif self.numerator != 0 and frac.numerator == 0 and frac.numerator > 0:
+                return Fraction(numerator=0, denominator=0)
+            elif self.numerator != 0 and frac.numerator == 0 and frac.numerator < 0:
+                return Fraction(numerator=0, denominator=0)
 
     def __mul__(self, frac):
         numerator = self.numerator * frac.numerator
         denominator = self.denominator * frac.denominator
-        return Fraction(numerator, denominator)
+
+        if self.denominator == 0 and frac.denominator == 0:
+            if self.numerator != 0 and frac.numerator == 0:
+                return Fraction(numerator=0, denominator=0)
+            elif self.numerator == 0 and frac.numerator == 0:
+                return Fraction(numerator=0, denominator=0)
+            elif self.numerator != 0 and frac.numerator != 0 and self.numerator > 0 and frac.numerator > 0:
+                return Fraction(numerator=1, denominator=0)
+            elif self.numerator != 0 and frac.numerator != 0 and self.numerator < 0 and frac.numerator < 0:
+                return Fraction(numerator=1, denominator=0)
+            elif self.numerator != 0 and frac.numerator != 0 and self.numerator < 0 and frac.numerator > 0:
+                return Fraction(numerator=-1, denominator=0)
+            elif self.numerator != 0 and frac.numerator != 0 and self.numerator > 0 and frac.numerator < 0:
+                return Fraction(numerator=-1, denominator=0)
+        elif frac.denominator != 0 and self.denominator != 0:
+            return Fraction(numerator, denominator)
+        elif self.denominator == 0 and frac.denominator != 0:
+            if self.numerator != 0 and frac.numerator != 0 and self.numerator > 0:
+                return Fraction(numerator=1, denominator=0)
+            elif self.numerator != 0 and frac.numerator != 0 and self.numerator < 0:
+                return Fraction(numerator=-1, denominator=0)
+            elif self.numerator == 0 and frac.numerator != 0:
+                return Fraction(numerator=0, denominator=0)
+        elif self.denominator != 0 and frac.denominator == 0:
+            if self.numerator == 0 and frac.numerator != 0:
+                return Fraction(numerator=0, denominator=0)
+            elif self.numerator == 0 and frac.numerator == 0:
+                return Fraction(numerator=0, denominator=0)
+            else:
+                return Fraction(numerator=0, denominator=0)
 
     def __str__(self):
         if self.denominator == 1:
