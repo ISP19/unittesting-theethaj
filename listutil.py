@@ -16,7 +16,6 @@ def unique(list):
     []
     """
     unique_letters = []
-
     for letter in list:
         if letter not in unique_letters:
             unique_letters.append(letter)

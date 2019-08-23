@@ -5,7 +5,7 @@ from fraction import Fraction
 
 
 class FractionTest(unittest.TestCase):
-    """Test the methods and constructor of the Fraction class. """
+    """Test the methods and constructor of the Fraction class."""
 
     def test_str(self):
         f = Fraction(3, -1)
