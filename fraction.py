@@ -13,7 +13,10 @@ class Fraction:
         """Initialize a new fraction with the given numerator
            and denominator (default 1).
         """
-        if denominator < 0:
+        if not isinstance(numerator, int) or not isinstance(denominator, int):
+            raise ValueError("Numerator and denominator must be an integer.")
+
+        elif denominator < 0:
             if numerator > 0:
                 numerator = numerator * (-1)
             else:
@@ -23,12 +26,18 @@ class Fraction:
         elif denominator == 0:
             if numerator < 0:
                 numerator = -1
-            elif numerator >= 0:
+            elif numerator > 0:
                 numerator = 1
+            else:
+                numerator = 0
 
-        gcd = math.gcd(numerator, denominator)
-        self.numerator = int(numerator/gcd)
-        self.denominator = int(denominator/gcd)
+        if numerator == 0 and denominator == 0:
+            self.numerator = 0
+            self.denominator = 0
+        else:
+            gcd = math.gcd(numerator, denominator)
+            self.numerator = int(numerator/gcd)
+            self.denominator = int(denominator/gcd)
 
     def __add__(self, frac):
         """Return the sum of two fractions as a new fraction.
@@ -68,7 +77,10 @@ class Fraction:
         numerator = self.numerator * frac.numerator
         denominator = self.denominator * frac.denominator
 
-        if self.denominator == 0 and frac.denominator == 0:
+        if self.denominator != 0 and frac.denominator == 0:
+            return Fraction(numerator=0, denominator=0)
+
+        elif self.denominator == 0 and frac.denominator == 0:
             if frac.numerator == 0:
                 return Fraction(numerator=0, denominator=0)
             elif (self.numerator > 0 and frac.numerator > 0) or (self.numerator < 0 and frac.numerator < 0):
@@ -86,9 +98,6 @@ class Fraction:
                 return Fraction(numerator=-1, denominator=0)
             elif self.numerator == 0 and frac.numerator != 0:
                 return Fraction(numerator=0, denominator=0)
-
-        elif self.denominator != 0 and frac.denominator == 0:
-            return Fraction(numerator=0, denominator=0)
 
     def __str__(self):
         if self.denominator == 1:
