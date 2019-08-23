@@ -129,13 +129,25 @@ class FractionTest(unittest.TestCase):
         self.assertEqual(Fraction(1,4), Fraction(1,2)*Fraction(1,2))
 
     def test_eq(self):
-        f = Fraction(1,0)
-        g = Fraction(40,0)
+        f = Fraction(4,6)
+        g = Fraction(2,3)
         h = Fraction(10000,20001)       # not quite 1/2
         i = Fraction(-23,0)
+        j = Fraction(-2,3)
+        k = Fraction(23,0)
+        l = Fraction(0,0)
+
         self.assertTrue(f == g)
-        self.assertTrue(f.__eq__(g))    # same thing
-        self.assertFalse(f == h)
-        self.assertFalse(f.__eq__(h))
-        self.assertFalse(g.__eq__(h))
-        self.assertFalse(i.__eq__(f))
+        self.assertTrue(f.__eq__(g))
+
+        self.assertFalse(f == j)
+        self.assertFalse(f.__eq__(j))
+
+        self.assertFalse(i == k)
+        self.assertFalse(i.__eq__(k))
+
+        self.assertFalse(l == h)
+        self.assertFalse(l.__eq__(h))
+
+        self.assertFalse(l == k)
+        self.assertFalse(l.__eq__(k))
