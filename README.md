@@ -1,6 +1,8 @@
 ## Unit Testing Assignment
+[![Build Status](https://travis-ci.com/theethaj/unittesting-theethaj.svg?branch=master)](https://travis-ci.com/theethaj/unittesting-theethaj)
 
 by Tetach Rattanavikran (6110545554).
+
 
 
 ## Test Cases for unique
@@ -86,6 +88,3 @@ Test Cases for equality method
 | positive infinity equals negative infinity | False |
 | fraction 0/0 equals any fraction (less than infinity) | False |
 | fraction 0/0 equals infinity | False |
-
-### Status
-[![Build Status](https://travis-ci.com/theethaj/unittesting-theethaj.svg?branch=master)](https://travis-ci.com/theethaj/unittesting-theethaj)
