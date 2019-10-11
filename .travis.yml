@@ -3,4 +3,4 @@ python:
   - "3.6"
   - "3.7"
 script:
- - py -m unittest discover -p "*_test.py"
+  - pytest
