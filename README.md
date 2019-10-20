@@ -1,5 +1,6 @@
 ## Unit Testing Assignment
 [![Build Status](https://travis-ci.com/theethaj/unittesting-theethaj.svg?branch=master)](https://travis-ci.com/theethaj/unittesting-theethaj)
+[![codecov](https://codecov.io/gh/theethaj/unittesting-theethaj/branch/master/graph/badge.svg)](https://codecov.io/gh/theethaj/unittesting-theethaj)
 
 by Tetach Rattanavikran (6110545554).
 
