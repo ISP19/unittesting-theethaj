@@ -68,10 +68,6 @@ class Fraction:
         elif self.denominator != 0 and frac.denominator == 0:
             if self.numerator > 0 and frac.numerator != 0:
                 return Fraction(numerator=1, denominator=0)
-            # elif self.numerator < 0 and frac.numerator != 0:
-            #     return Fraction(numerator=-1, denominator=0)
-            # elif self.numerator == 0 and frac.numerator != 0:
-            #     return Fraction(numerator=0, denominator=0)
 
     def __mul__(self, frac):
         numerator = self.numerator * frac.numerator
@@ -85,8 +81,6 @@ class Fraction:
                 return Fraction(numerator=0, denominator=0)
             elif (self.numerator > 0 and frac.numerator > 0) or (self.numerator < 0 and frac.numerator < 0):
                 return Fraction(numerator=1, denominator=0)
-            # elif (self.numerator < 0 and frac.numerator > 0) or (self.numerator > 0 and frac.numerator < 0):
-            #     return Fraction(numerator=-1, denominator=0)
 
         elif frac.denominator != 0 and self.denominator != 0:
             return Fraction(numerator, denominator)
@@ -94,10 +88,6 @@ class Fraction:
         elif frac.numerator != 0 and self.denominator == 0 and frac.denominator != 0:
             if self.numerator > 0:
                 return Fraction(numerator=1, denominator=0)
-            # elif self.numerator < 0:
-            #     return Fraction(numerator=-1, denominator=0)
-            # elif self.numerator == 0:
-            #     return Fraction(numerator=0, denominator=0)
 
     def __str__(self):
         if self.denominator == 1:
